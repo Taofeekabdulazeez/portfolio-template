@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+
+  .bg-dither-pattern {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(245, 243, 239, 0.03) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(245, 243, 239, 0.03) 3px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(245, 243, 239, 0.03) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(245, 243, 239, 0.03) 3px
+      );
+    background-size: 4px 4px;
+  }
+
+  .bg-film-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  @keyframes glitch {
+    0%, 100% {
+      text-shadow:
+        0.05em 0 0 rgba(139, 115, 85, 0.3),
+        -0.05em -0.025em 0 rgba(45, 149, 150, 0.3);
+    }
+    14% {
+      text-shadow:
+        0.05em 0 0 rgba(139, 115, 85, 0.3),
+        -0.05em -0.025em 0 rgba(45, 149, 150, 0.3);
+    }
+    15% {
+      text-shadow:
+        -0.05em -0.025em 0 rgba(139, 115, 85, 0.3),
+        0.05em 0.025em 0 rgba(45, 149, 150, 0.3);
+    }
+    49% {
+      text-shadow:
+        -0.05em -0.025em 0 rgba(139, 115, 85, 0.3),
+        0.05em 0.025em 0 rgba(45, 149, 150, 0.3);
+    }
+    50% {
+      text-shadow:
+        0.05em 0.025em 0 rgba(139, 115, 85, 0.3),
+        -0.05em -0.05em 0 rgba(45, 149, 150, 0.3);
+    }
+    99% {
+      text-shadow:
+        0.05em 0.025em 0 rgba(139, 115, 85, 0.3),
+        -0.05em -0.05em 0 rgba(45, 149, 150, 0.3);
+    }
+  }
+
+  .animate-glitch {
+    animation: glitch 3s infinite;
+  }
+
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -5%); }
+    20% { transform: translate(-10%, 5%); }
+    30% { transform: translate(5%, -10%); }
+    40% { transform: translate(-5%, 15%); }
+    50% { transform: translate(-10%, 5%); }
+    60% { transform: translate(15%, 0); }
+    70% { transform: translate(0, 10%); }
+    80% { transform: translate(-15%, 0); }
+    90% { transform: translate(10%, 5%); }
+  }
+
+  .animate-grain {
+    animation: grain 8s steps(10) infinite;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(4);
+      opacity: 0;
+    }
+  }
+
+  .animate-ripple {
+    animation: ripple 1s ease-out forwards;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B7355;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A68A6F;
+}
