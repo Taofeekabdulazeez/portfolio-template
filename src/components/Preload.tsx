@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface PreloadProps {
   onComplete: () => void;
@@ -6,8 +6,8 @@ interface PreloadProps {
 
 const Preload = ({ onComplete }: PreloadProps) => {
   const [isExiting, setIsExiting] = useState(false);
-  const [displayText, setDisplayText] = useState('');
-  const fullText = 'hello welcome to my story';
+  const [displayText, setDisplayText] = useState("");
+  const fullText = "Hello welcome to my story";
 
   useEffect(() => {
     let currentIndex = 0;
@@ -37,7 +37,7 @@ const Preload = ({ onComplete }: PreloadProps) => {
   return (
     <div
       className={`fixed inset-0 bg-[#0D0D0D] z-[9999] flex items-center justify-center transition-all duration-1000 ${
-        isExiting ? 'opacity-0' : 'opacity-100'
+        isExiting ? "opacity-0" : "opacity-100"
       }`}
     >
       <div className="absolute inset-0 opacity-30 bg-film-grain" />
@@ -53,7 +53,9 @@ const Preload = ({ onComplete }: PreloadProps) => {
           {displayText}
           <span
             className={`inline-block w-1 h-12 md:h-16 bg-[#8B7355] ml-2 ${
-              displayText.length < fullText.length ? 'animate-pulse' : 'animate-none'
+              displayText.length < fullText.length
+                ? "animate-pulse"
+                : "animate-none"
             }`}
           />
         </h1>

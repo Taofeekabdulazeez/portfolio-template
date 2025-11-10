@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import Preload from './components/Preload';
-import Hero from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
+import { useState, useEffect } from "react";
+import Preload from "./components/Preload";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
 import Achievements from './components/Achievements';
-import Skills from './components/Skills';
-import Contact from './components/Contact';
-import Navigation from './components/Navigation';
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
+import Navigation from "./components/Navigation";
 
 function App() {
   const [activeSection, setActiveSection] = useState(0);
@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll('section[data-section]');
+      const sections = document.querySelectorAll("section[data-section]");
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       sections.forEach((section, index) => {
@@ -29,13 +29,15 @@ function App() {
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {!preloadComplete && <Preload onComplete={() => setPreloadComplete(true)} />}
+      {!preloadComplete && (
+        <Preload onComplete={() => setPreloadComplete(true)} />
+      )}
       <div className="bg-[#0D0D0D] text-[#F5F3EF]">
         <Navigation activeSection={activeSection} />
         <Hero />

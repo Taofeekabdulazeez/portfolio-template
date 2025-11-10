@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +33,9 @@ const About = () => {
         <div className="relative">
           <div
             className={`transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-12"
             }`}
           >
             <div className="relative aspect-square max-w-md mx-auto">
@@ -41,7 +43,7 @@ const About = () => {
               <div className="absolute inset-0 bg-[#1A1A1A] rounded-lg overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#8B7355]/10 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center text-[#8B7355]/30 text-8xl font-serif">
-                  ?
+                  <img src="./src/image/fawaz.png" alt="My picture" />
                 </div>
               </div>
             </div>
@@ -51,16 +53,16 @@ const About = () => {
         <div className="space-y-8">
           {[
             {
-              title: 'The Beginning',
-              text: 'From digital noise to deliberate creation, my journey started with curiosity and evolved into craftsmanship.',
+              title: "The Beginning",
+              text: "I'm Akinola Fawaz, a full-stack developer who started with curiosity. I broke things just to learn how they work. That curiosity grew into a passion for building systems that solve real problems",
             },
             {
-              title: 'The Evolution',
-              text: 'Every pixel, every interaction, every moment of friction became an opportunity to refine the experience.',
+              title: "The Evolution",
+              text: "I went to uni to study computer science so I could learn to build the things I was curious about. Every project taught me that good development isn't about complexity but clarity. It's about connecting logic with usability and making things fast, reliable, and purposeful.",
             },
             {
-              title: 'The Philosophy',
-              text: 'Design is not just what it looks like. Design is how it makes you feel, how it guides you, how it remembers you.',
+              title: "The Philosophy",
+              text: "My approach is simple: do it afraid, do it scared, do it tired, do it when you're not feeling it. Do it first, perfect it later. Every day you do something, you become a better version of yesterday's self. For me, it's about showing up and making things work.",
             },
           ].map((item, index) => (
             <div
@@ -68,7 +70,7 @@ const About = () => {
               className={`transition-all duration-1000 delay-${index * 200}`}
               style={{
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(32px)',
+                transform: isVisible ? "translateY(0)" : "translateY(32px)",
                 transitionDelay: `${index * 200}ms`,
               }}
             >
@@ -85,8 +87,8 @@ const About = () => {
             className={`pt-8 transition-all duration-1000 delay-600`}
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(32px)',
-              transitionDelay: '600ms',
+              transform: isVisible ? "translateY(0)" : "translateY(32px)",
+              transitionDelay: "600ms",
             }}
           >
             <p className="text-xl font-serif text-[#8B7355] group cursor-pointer inline-block">

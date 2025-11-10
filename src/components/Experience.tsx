@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 interface Milestone {
   year: string;
@@ -8,11 +8,36 @@ interface Milestone {
 }
 
 const milestones: Milestone[] = [
-  { year: '2020', title: 'The Spark', role: 'First Design', color: '#8B7355' },
-  { year: '2021', title: 'The Learning', role: 'UI/UX Exploration', color: '#2D9596' },
-  { year: '2022', title: 'The Craft', role: 'Professional Work', color: '#8B7355' },
-  { year: '2023', title: 'The Vision', role: 'Creative Direction', color: '#2D9596' },
-  { year: '2024', title: 'The Mastery', role: 'Full-Stack Design', color: '#8B7355' },
+  {
+    year: "2012",
+    title: "The Spark",
+    role: "First Phone & Games",
+    color: "#8B7355",
+  },
+  {
+    year: "2020",
+    title: "The Beginning",
+    role: "University of Ilorin",
+    color: "#2D9596",
+  },
+  {
+    year: "2021",
+    title: "The Learning",
+    role: "Building & Breaking",
+    color: "#8B7355",
+  },
+  {
+    year: "2023",
+    title: "The Craft",
+    role: "Full-Stack Development",
+    color: "#2D9596",
+  },
+  {
+    year: "2024",
+    title: "The Evolution",
+    role: "Do It First, Perfect Later",
+    color: "#8B7355",
+  },
 ];
 
 const Experience = () => {
@@ -48,7 +73,7 @@ const Experience = () => {
       <div className="max-w-7xl mx-auto w-full">
         <h2
           className={`text-5xl md:text-7xl font-serif text-center mb-20 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           The Journey
@@ -65,21 +90,21 @@ const Experience = () => {
                 onMouseEnter={() => setActiveIndex(index)}
                 style={{
                   opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+                  transform: isVisible ? "translateY(0)" : "translateY(40px)",
                   transition: `all 1000ms ${index * 100}ms`,
                 }}
               >
                 <div
                   className={`w-4 h-4 rounded-full border-2 transition-all duration-500 ${
                     activeIndex === index
-                      ? 'scale-150 shadow-lg shadow-current'
-                      : 'scale-100'
+                      ? "scale-150 shadow-lg shadow-current"
+                      : "scale-100"
                   }`}
                   style={{ borderColor: milestone.color }}
                 >
                   <div
                     className={`w-full h-full rounded-full transition-all duration-500 ${
-                      activeIndex === index ? 'scale-100' : 'scale-0'
+                      activeIndex === index ? "scale-100" : "scale-0"
                     }`}
                     style={{ backgroundColor: milestone.color }}
                   />
@@ -88,7 +113,9 @@ const Experience = () => {
                 <div className="mt-8 text-center">
                   <div
                     className={`text-sm font-mono mb-2 transition-all duration-300 ${
-                      activeIndex === index ? 'text-[#8B7355]' : 'text-[#F5F3EF]/50'
+                      activeIndex === index
+                        ? "text-[#8B7355]"
+                        : "text-[#F5F3EF]/50"
                     }`}
                   >
                     {milestone.year}
@@ -96,12 +123,16 @@ const Experience = () => {
                   <div
                     className={`transition-all duration-500 ${
                       activeIndex === index
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-4'
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4"
                     }`}
                   >
-                    <h3 className="text-xl font-serif mb-1">{milestone.title}</h3>
-                    <p className="text-sm text-[#F5F3EF]/70">{milestone.role}</p>
+                    <h3 className="text-xl font-serif mb-1">
+                      {milestone.title}
+                    </h3>
+                    <p className="text-sm text-[#F5F3EF]/70">
+                      {milestone.role}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -114,21 +145,19 @@ const Experience = () => {
             className="transition-all duration-1000 delay-500"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(32px)',
+              transform: isVisible ? "translateY(0)" : "translateY(32px)",
             }}
           >
-            <p className="text-lg text-[#F5F3EF]/80 leading-relaxed">
-              {milestones[activeIndex].year === '2020' &&
-                'The beginning of a journey into the world of pixels, patterns, and possibilities.'}
-              {milestones[activeIndex].year === '2021' &&
-                'Exploring the depths of user experience, learning what makes interfaces intuitive and delightful.'}
-              {milestones[activeIndex].year === '2022' &&
-                'Turning passion into profession, crafting experiences that resonate with real users.'}
-              {milestones[activeIndex].year === '2023' &&
-                'Leading with vision, shaping narratives through design that tells stories.'}
-              {milestones[activeIndex].year === '2024' &&
-                'Merging design with development, building complete experiences from concept to code.'}
-            </p>
+            {milestones[activeIndex].year === "2012" &&
+              "The spark that started it all. A phone, some games, and endless curiosity about how the digital world works."}
+            {milestones[activeIndex].year === "2020" &&
+              "Stepped into University of Ilorin to study Computer Science, ready to turn curiosity into capability."}
+            {milestones[activeIndex].year === "2021" &&
+              "Breaking things to understand them. Learning how websites behave, how games are built, and how it all connects."}
+            {milestones[activeIndex].year === "2023" &&
+              "Building systems that solve real problems. Connecting logic with usability, making things fast and reliable."}
+            {milestones[activeIndex].year === "2024" &&
+              "Do it afraid, do it tired, do it anyway. Every day, becoming a better version of yesterday's self."}
           </div>
         </div>
       </div>

@@ -1,37 +1,47 @@
-import { useState, useEffect, useRef } from 'react';
-import { ExternalLink } from 'lucide-react';
+import { useState, useEffect, useRef } from "react";
+import { ExternalLink } from "lucide-react";
 
 interface Project {
   title: string;
   category: string;
   description: string;
-  color: string;
+  gradient: string;
 }
 
 const projects: Project[] = [
   {
-    title: 'Ethereal Commerce',
-    category: 'E-Commerce Platform',
-    description: 'A seamless shopping experience that feels like browsing through an art gallery.',
-    color: '#8B7355',
+    title: "Digital Metamorphosis",
+    category: "Interactive Design",
+    description:
+      "An immersive web experience exploring the transformation of digital identity",
+    gradient: "from-violet-500/20 to-purple-600/20",
   },
   {
-    title: 'Motion Studio',
-    category: 'Creative Portfolio',
-    description: 'Where animation meets storytelling, bringing creative work to life.',
-    color: '#2D9596',
+    title: "Cinematic Portfolio",
+    category: "Motion Design",
+    description:
+      "A narrative-driven showcase merging motion design with storytelling",
+    gradient: "from-amber-600/20 to-orange-500/20",
   },
   {
-    title: 'Mindful Space',
-    category: 'Wellness App',
-    description: 'A sanctuary for mental wellness, designed with care and empathy.',
-    color: '#8B7355',
+    title: "Constellation UI",
+    category: "Design Systems",
+    description:
+      "A design system inspired by cosmic patterns and fluid interactions",
+    gradient: "from-teal-500/20 to-cyan-500/20",
+  },
+  {
+    title: "Emergence Studio",
+    category: "Full-Stack Development",
+    description:
+      "Creative agency platform with real-time collaboration features",
+    gradient: "from-purple-600/20 to-violet-500/20",
   },
 ];
 
 const Projects = () => {
-  const [activeProject, setActiveProject] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -54,70 +64,148 @@ const Projects = () => {
   return (
     <section
       ref={sectionRef}
-      data-section
-      className="min-h-screen py-24 px-6 relative overflow-hidden"
+      id="projects"
+      className="relative min-h-screen py-32 px-6 overflow-hidden"
     >
+      {/* Background */}
       <div className="absolute inset-0 opacity-5 bg-film-grain" />
 
-      <div className="max-w-7xl mx-auto">
-        <h2
-          className={`text-5xl md:text-7xl font-serif text-center mb-20 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
-        >
-          Selected Works
-        </h2>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2
+            className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-800 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
+            }`}
+          >
+            Digital{" "}
+            <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+              Gallery
+            </span>
+          </h2>
+          <p
+            className={`text-xl text-slate-600 max-w-2xl mx-auto transition-all duration-800 delay-100 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
+            }`}
+          >
+            Each project is a scene in the story of creative evolution
+          </p>
+        </div>
 
-        <div className="space-y-8">
+        {/* Projects grid */}
+        <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`group cursor-pointer transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-              onMouseEnter={() => setActiveProject(index)}
+              className={`group transition-all duration-600 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              } ${hoveredIndex === index ? "-translate-y-2" : ""}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative bg-[#1A1A1A] rounded-lg overflow-hidden border border-[#F5F3EF]/10 hover:border-[#8B7355]/30 transition-all duration-500">
+              <div className="relative h-96 rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-lg">
+                {/* Project visual area */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
-                  style={{ backgroundColor: project.color }}
-                />
+                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}
+                >
+                  <div
+                    className={`absolute inset-0 transition-opacity duration-500 ${
+                      hoveredIndex === index ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{
+                      backgroundImage: `repeating-linear-gradient(
+                        0deg,
+                        transparent,
+                        transparent 2px,
+                        rgba(0, 0, 0, 0.03) 2px,
+                        rgba(0, 0, 0, 0.03) 4px
+                      )`,
+                    }}
+                  />
+                </div>
 
-                <div className="relative p-8 md:p-12">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                    <div className="flex-1">
-                      <div className="text-sm font-mono text-[#8B7355] mb-3">
-                        {project.category}
-                      </div>
-                      <h3 className="text-4xl md:text-5xl font-serif mb-4 group-hover:text-[#8B7355] transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                      <p className="text-lg text-[#F5F3EF]/70 leading-relaxed max-w-2xl">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full border border-[#F5F3EF]/20 group-hover:border-[#8B7355] group-hover:bg-[#8B7355]/10 transition-all duration-300">
-                      <ExternalLink className="w-6 h-6 text-[#F5F3EF]/50 group-hover:text-[#8B7355] transition-colors duration-300" />
-                    </div>
-                  </div>
-
-                  <div className="mt-8 h-64 bg-[#0D0D0D] rounded-lg relative overflow-hidden">
-                    <div
-                      className="absolute inset-0 bg-gradient-to-br from-transparent to-current opacity-20"
-                      style={{ color: project.color }}
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center text-[#F5F3EF]/10 text-9xl font-serif">
-                      {index + 1}
-                    </div>
+                {/* Content overlay */}
+                <div
+                  className={`absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent transition-opacity duration-500 ${
+                    hoveredIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div className="space-y-4">
+                    <span
+                      className={`block text-sm font-semibold text-orange-400 uppercase tracking-wide transition-all duration-700 ${
+                        hoveredIndex === index
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-8 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay:
+                          hoveredIndex === index ? "200ms" : "0ms",
+                      }}
+                    >
+                      {project.category}
+                    </span>
+                    <h3
+                      className={`text-3xl font-bold text-white transition-all duration-700 ${
+                        hoveredIndex === index
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-8 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay:
+                          hoveredIndex === index ? "350ms" : "0ms",
+                      }}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className={`text-slate-300 transition-all duration-700 ${
+                        hoveredIndex === index
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-8 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay:
+                          hoveredIndex === index ? "500ms" : "0ms",
+                      }}
+                    >
+                      {project.description}
+                    </p>
+                    <button
+                      className={`inline-flex items-center px-4 py-2 text-sm border border-purple-500 text-white rounded-lg hover:bg-purple-500 hover:text-white transition-all duration-700 group/btn ${
+                        hoveredIndex === index
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-8 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay:
+                          hoveredIndex === index ? "650ms" : "0ms",
+                      }}
+                    >
+                      View Project
+                      <ExternalLink className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </button>
                   </div>
                 </div>
 
+                {/* Static title */}
                 <div
-                  className="absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
-                  style={{ backgroundColor: project.color }}
-                />
+                  className={`absolute bottom-8 left-8 right-8 transition-opacity duration-500 ${
+                    hoveredIndex === index ? "opacity-0" : "opacity-100"
+                  }`}
+                >
+                  <h3 className="text-2xl font-bold text-slate-900">
+                    {project.title}
+                  </h3>
+                  <span className="text-sm text-slate-600">
+                    {project.category}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
