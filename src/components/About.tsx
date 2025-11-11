@@ -25,7 +25,7 @@ const About = () => {
     <section
       ref={sectionRef}
       data-section
-      className="min-h-screen flex items-center py-24 px-6 md:px-12 relative overflow-hidden"
+      className="min-h-screen flex items-center py-16 px-6 md:px-12 relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-5 bg-film-grain" />
 
@@ -42,8 +42,12 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-[#8B7355]/30 to-[#2D9596]/30 rounded-lg transform rotate-3" />
               <div className="absolute inset-0 bg-[#1A1A1A] rounded-lg overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#8B7355]/10 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center text-[#8B7355]/30 text-8xl font-serif">
-                  <img src="./src/image/fawaz.png" alt="My picture" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img
+                    src="./src/image/fawaz.png"
+                    alt="Akinola Fawaz"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -51,50 +55,85 @@ const About = () => {
         </div>
 
         <div className="space-y-8">
-          {[
-            {
-              title: "The Beginning",
-              text: "I'm Akinola Fawaz, a full-stack developer who started with curiosity. I broke things just to learn how they work. That curiosity grew into a passion for building systems that solve real problems",
-            },
-            {
-              title: "The Evolution",
-              text: "I went to uni to study computer science so I could learn to build the things I was curious about. Every project taught me that good development isn't about complexity but clarity. It's about connecting logic with usability and making things fast, reliable, and purposeful.",
-            },
-            {
-              title: "The Philosophy",
-              text: "My approach is simple: do it afraid, do it scared, do it tired, do it when you're not feeling it. Do it first, perfect it later. Every day you do something, you become a better version of yesterday's self. For me, it's about showing up and making things work.",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className={`transition-all duration-1000 delay-${index * 200}`}
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(32px)",
-                transitionDelay: `${index * 200}ms`,
-              }}
-            >
-              <h3 className="text-2xl font-serif text-[#8B7355] mb-3">
-                {item.title}
-              </h3>
-              <p className="text-lg text-[#F5F3EF]/80 leading-relaxed">
-                {item.text}
-              </p>
-            </div>
-          ))}
+          <div
+            className={`transition-all duration-1000`}
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(32px)",
+            }}
+          >
+            <h2 className="text-4xl md:text-5xl font-serif text-[#8B7355] mb-6">
+              About Me
+            </h2>
+          </div>
 
           <div
-            className={`pt-8 transition-all duration-1000 delay-600`}
+            className={`transition-all duration-1000 delay-200`}
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(32px)",
+              transitionDelay: "200ms",
+            }}
+          >
+            <p className="text-xl text-[#F5F3EF]/90 leading-relaxed mb-6">
+              I'm Akinola Fawaz, a full-stack developer from Nigeria. I build
+              scalable web applications using React, Node.js, and TypeScript.
+            </p>
+            <p className="text-lg text-[#F5F3EF]/80 leading-relaxed">
+              I focus on writing clean, maintainable code and building systems
+              that are fast, reliable, and solve real problems. Every project I
+              work on prioritizes clarity over complexity.
+            </p>
+          </div>
+
+          <div
+            className={`transition-all duration-1000 delay-400`}
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(32px)",
+              transitionDelay: "400ms",
+            }}
+          >
+            <div className="pt-6 border-t border-[#F5F3EF]/10">
+              <h3 className="text-sm font-mono text-[#8B7355] tracking-wider mb-4">
+                WHAT I DO
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Full-stack web applications",
+                  "RESTful & GraphQL APIs",
+                  "Database design & optimization",
+                  "UI/UX implementation",
+                ].map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center text-[#F5F3EF]/80"
+                  >
+                    <span className="w-1.5 h-1.5 bg-[#8B7355] rounded-full mr-3" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div
+            className={`pt-4 transition-all duration-1000 delay-600`}
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? "translateY(0)" : "translateY(32px)",
               transitionDelay: "600ms",
             }}
           >
-            <p className="text-xl font-serif text-[#8B7355] group cursor-pointer inline-block">
-              Let's create something worth remembering
-              <span className="block h-px bg-gradient-to-r from-[#8B7355] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left mt-1" />
-            </p>
+            <a
+              href="#contact"
+              className="group inline-flex items-center text-lg font-mono text-[#8B7355] hover:text-[#F5F3EF] transition-colors duration-300"
+            >
+              Let's work together
+              <span className="ml-2 transform group-hover:translate-x-2 transition-transform duration-300">
+                →
+              </span>
+            </a>
           </div>
         </div>
       </div>

@@ -33,7 +33,7 @@ const Hero = () => {
         style={{ opacity: pixelOpacity }}
       />
 
-      <div className="relative z-10 text-center px-6">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div
           className={`transition-all duration-1000 ${
             textVisible
@@ -41,15 +41,26 @@ const Hero = () => {
               : "opacity-0 translate-y-8"
           }`}
         >
-          <h1 className="text-6xl md:text-8xl font-serif mb-4 tracking-tight">
-            <span className="inline-block animate-glitch">
-              Crafted in chaos
+          <div className="text-sm font-mono text-[#8B7355] tracking-widest mb-4 animate-pulse">
+            AKINOLA FAWAZ
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-serif mb-6 tracking-tight">
+            <span className="inline-block hover:text-[#8B7355] transition-colors duration-500">
+              Full Stack Developer
             </span>
           </h1>
+          
           <div className="h-px w-48 bg-gradient-to-r from-transparent via-[#8B7355] to-transparent mx-auto my-8" />
-          <h2 className="text-4xl md:text-6xl font-serif tracking-tight">
-            defined by purpose.
-          </h2>
+          
+          <p className="text-xl md:text-2xl text-[#F5F3EF]/80 font-light max-w-3xl mx-auto leading-relaxed">
+            <span className="inline-block hover:scale-105 transition-transform duration-300">
+              Building scalable web applications with React, Node.js, and TypeScript.
+            </span>
+            <span className="block mt-2 text-[#8B7355] animate-pulse">
+              Turning complex problems into elegant solutions.
+            </span>
+          </p>
         </div>
 
         <div

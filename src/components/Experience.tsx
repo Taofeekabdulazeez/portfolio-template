@@ -1,48 +1,37 @@
 import { useEffect, useRef, useState } from "react";
 
-interface Milestone {
-  year: string;
-  title: string;
-  role: string;
+interface Stat {
+  value: string;
+  label: string;
   color: string;
 }
 
-const milestones: Milestone[] = [
+const stats: Stat[] = [
   {
-    year: "2012",
-    title: "The Spark",
-    role: "First Phone & Games",
+    value: "2+",
+    label: "Years Coding",
     color: "#8B7355",
   },
   {
-    year: "2020",
-    title: "The Beginning",
-    role: "University of Ilorin",
+    value: "10+",
+    label: "Projects Built",
     color: "#2D9596",
   },
   {
-    year: "2021",
-    title: "The Learning",
-    role: "Building & Breaking",
+    value: "10+",
+    label: "Technologies",
     color: "#8B7355",
   },
   {
-    year: "2023",
-    title: "The Craft",
-    role: "Full-Stack Development",
+    value: "100+",
+    label: "GitHub Commits",
     color: "#2D9596",
-  },
-  {
-    year: "2024",
-    title: "The Evolution",
-    role: "Do It First, Perfect Later",
-    color: "#8B7355",
   },
 ];
 
 const Experience = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [counters, setCounters] = useState(stats.map(() => 0));
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -62,103 +51,114 @@ const Experience = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (isVisible) {
+      const intervals = stats.map((stat, index) => {
+        const target = parseInt(stat.value);
+        const duration = 2000;
+        const steps = 60;
+        const increment = target / steps;
+        let current = 0;
+
+        return setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            setCounters((prev) => {
+              const newCounters = [...prev];
+              newCounters[index] = target;
+              return newCounters;
+            });
+            clearInterval(intervals[index]);
+          } else {
+            setCounters((prev) => {
+              const newCounters = [...prev];
+              newCounters[index] = Math.floor(current);
+              return newCounters;
+            });
+          }
+        }, duration / steps);
+      });
+
+      return () => intervals.forEach(clearInterval);
+    }
+  }, [isVisible]);
+
   return (
     <section
       ref={sectionRef}
       data-section
-      className="min-h-screen flex items-center py-24 px-6 relative overflow-hidden"
+      className="min-h-screen flex items-center py-16 px-6 relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-5 bg-film-grain" />
 
       <div className="max-w-7xl mx-auto w-full">
         <h2
-          className={`text-5xl md:text-7xl font-serif text-center mb-20 transition-all duration-1000 ${
+          className={`text-5xl md:text-7xl font-serif text-center mb-4 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          The Journey
+          Impact
         </h2>
 
-        <div className="relative">
-          <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#8B7355]/30 to-transparent" />
+        <p
+          className={`text-center text-lg text-[#F5F3EF]/60 mb-20 transition-all duration-1000 delay-200 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
+          Building, learning, and shipping every day
+        </p>
 
-          <div className="flex justify-between items-center relative z-10">
-            {milestones.map((milestone, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center cursor-pointer group"
-                onMouseEnter={() => setActiveIndex(index)}
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(40px)",
-                  transition: `all 1000ms ${index * 100}ms`,
-                }}
-              >
-                <div
-                  className={`w-4 h-4 rounded-full border-2 transition-all duration-500 ${
-                    activeIndex === index
-                      ? "scale-150 shadow-lg shadow-current"
-                      : "scale-100"
-                  }`}
-                  style={{ borderColor: milestone.color }}
-                >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className={`text-center transition-all duration-1000`}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(40px)",
+                transitionDelay: `${index * 100}ms`,
+              }}
+            >
+              <div className="relative group">
+                <div className="relative">
                   <div
-                    className={`w-full h-full rounded-full transition-all duration-500 ${
-                      activeIndex === index ? "scale-100" : "scale-0"
-                    }`}
-                    style={{ backgroundColor: milestone.color }}
-                  />
-                </div>
-
-                <div className="mt-8 text-center">
-                  <div
-                    className={`text-sm font-mono mb-2 transition-all duration-300 ${
-                      activeIndex === index
-                        ? "text-[#8B7355]"
-                        : "text-[#F5F3EF]/50"
-                    }`}
+                    className="text-5xl md:text-6xl font-serif mb-3 transition-colors duration-300"
+                    style={{ color: stat.color }}
                   >
-                    {milestone.year}
+                    {counters[index]}
+                    {stat.value.includes("+") && "+"}
                   </div>
-                  <div
-                    className={`transition-all duration-500 ${
-                      activeIndex === index
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4"
-                    }`}
-                  >
-                    <h3 className="text-xl font-serif mb-1">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-sm text-[#F5F3EF]/70">
-                      {milestone.role}
-                    </p>
+                  <div className="text-sm md:text-base font-mono text-[#F5F3EF]/70 tracking-wider uppercase">
+                    {stat.label}
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* Decorative line */}
+              <div
+                className="mt-6 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-30"
+                style={{ color: stat.color }}
+              />
+            </div>
+          ))}
         </div>
 
-        <div className="mt-24 text-center max-w-2xl mx-auto">
-          <div
-            className="transition-all duration-1000 delay-500"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(32px)",
-            }}
+        <div
+          className={`mt-20 text-center transition-all duration-1000 delay-500 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
+          <a
+            href="https://github.com/phawaaaz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[#8B7355] font-mono text-sm hover:text-[#F5F3EF] transition-colors duration-300 group"
           >
-            {milestones[activeIndex].year === "2012" &&
-              "The spark that started it all. A phone, some games, and endless curiosity about how the digital world works."}
-            {milestones[activeIndex].year === "2020" &&
-              "Stepped into University of Ilorin to study Computer Science, ready to turn curiosity into capability."}
-            {milestones[activeIndex].year === "2021" &&
-              "Breaking things to understand them. Learning how websites behave, how games are built, and how it all connects."}
-            {milestones[activeIndex].year === "2023" &&
-              "Building systems that solve real problems. Connecting logic with usability, making things fast and reliable."}
-            {milestones[activeIndex].year === "2024" &&
-              "Do it afraid, do it tired, do it anyway. Every day, becoming a better version of yesterday's self."}
-          </div>
+            View my work on GitHub
+            <span className="transform group-hover:translate-x-1 transition-transform duration-300">
+              →
+            </span>
+          </a>
         </div>
       </div>
     </section>
