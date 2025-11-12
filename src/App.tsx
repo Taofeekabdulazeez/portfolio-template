@@ -42,8 +42,8 @@ function App() {
         <Navigation activeSection={activeSection} />
         <Hero />
         <About />
-        <Experience />
         <Projects />
+        <Experience />
         <Achievements />
         <Skills />
         <Contact />

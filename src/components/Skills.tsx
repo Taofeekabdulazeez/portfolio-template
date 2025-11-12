@@ -1,68 +1,84 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-const skills = [
-  { name: "React", description: "Building dynamic UIs" },
-  { name: "Next.js", description: "Full-stack React framework" },
-  { name: "Node.js", description: "JavaScript everywhere" },
-  { name: "Express", description: "Fast, minimal backend" },
-  { name: "MongoDB", description: "Flexible document storage" },
-  { name: "PostgreSQL", description: "Reliable relational data" },
-  { name: "JWT", description: "Stateless authentication" },
-  { name: "TypeScript", description: "Type-safe JavaScript" },
-  { name: "Tailwind CSS", description: "Utility-first styling" },
-  { name: "REST API", description: "Standardized communication" },
-  { name: "GraphQL", description: "Query what you need" },
-  { name: "Prisma", description: "Type-safe database client" },
-  { name: "OAuth", description: "Secure delegated access" },
-  { name: "Redux", description: "Predictable state management" },
-  { name: "Git", description: "Version control mastery" },
-  { name: "WebSockets", description: "Real-time communication" },
-  { name: "Redis", description: "Lightning-fast caching" },
-];
+const skillGroups = {
+  Frontend: ["React", "Next.js", "Tailwind CSS", "Redux Toolkit"],
+  Backend: ["Node.js", "Express", "GraphQL", "REST API", "WebSockets"],
+  Database: ["PostgreSQL", "MongoDB", "Redis"],
+  Tools: ["Git", "VsCode", "Vercel", "Postman"],
+  Principles: [
+    "Clean Architecture",
+    "System Thinking",
+    "Scalable Design",
+    "Agile Methodologies",
+    "TDD",
+    "OOP",
+  ],
+};
 
 const Skills = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       data-section
-      className="min-h-screen py-24 px-6 relative overflow-hidden flex items-center"
+      className="min-h-screen py-24 px-6 relative flex flex-col items-center justify-center"
     >
       <div className="absolute inset-0 opacity-5 bg-film-grain" />
-      <div className="max-w-7xl mx-auto w-full">
-        <h2 className="text-5xl md:text-7xl font-serif text-center mb-20">
-          Skills & Philosophy
-        </h2>
 
-        {/* Adaptive, minimalist grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 max-w-6xl mx-auto">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              className="group text-center cursor-default"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 200 }}
-              >
-                <div className="text-xl font-serif text-[#8B7355] mb-2 transition-colors duration-300 group-hover:text-[#F5F3EF]">
-                  {skill.name}
-                </div>
-                <p className="text-sm text-[#F5F3EF]/60 italic group-hover:text-[#8B7355]/80 transition-colors duration-300">
-                  {skill.description}
-                </p>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+      <h2
+        className={`text-5xl md:text-7xl font-serif text-center mb-4 transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        Tech Stack
+      </h2>
 
-        <div className="mt-16 text-center text-[#F5F3EF]/60 italic">
-          Growth isn’t a checklist, it’s a conversation between tools and ideas.
-        </div>
+      <p
+        className={`text-center text-lg text-[#F5F3EF]/60 mb-16 transition-all duration-1000 delay-200 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        Tools I use to build
+      </p>
+
+      <div className="max-w-7xl w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12">
+        {Object.entries(skillGroups).map(([category, skills], i) => (
+          <div
+            key={category}
+            className={`transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: `${i * 100}ms` }}
+          >
+            <h3 className="text-[#8B7355] font-mono text-sm mb-4 tracking-wider uppercase">
+              {category}
+            </h3>
+            <ul className="space-y-2">
+              {skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="text-[#F5F3EF]/70 text-sm border-l-2 border-[#8B7355]/30 pl-3 hover:border-[#8B7355] hover:text-[#F5F3EF] transition-all duration-300"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
-      {/* </div> */}
     </section>
   );
 };

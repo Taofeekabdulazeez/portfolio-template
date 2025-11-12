@@ -97,7 +97,7 @@ const Experience = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          Impact
+          Craft
         </h2>
 
         <p
@@ -105,7 +105,7 @@ const Experience = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          Building, learning, and shipping every day
+          Building, learning, and refining my craft every day
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
@@ -134,7 +134,6 @@ const Experience = () => {
                 </div>
               </div>
 
-              {/* Decorative line */}
               <div
                 className="mt-6 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-30"
                 style={{ color: stat.color }}

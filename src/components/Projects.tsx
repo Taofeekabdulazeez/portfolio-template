@@ -1,41 +1,59 @@
 import { useState, useEffect, useRef } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 interface Project {
   title: string;
-  category: string;
   description: string;
-  gradient: string;
+  tech: string[];
+  github?: string;
+  live?: string;
+  category: "Full-Stack" | "Backend" | "Frontend";
 }
 
 const projects: Project[] = [
   {
-    title: "Digital Metamorphosis",
-    category: "Interactive Design",
-    description:
-      "An immersive web experience exploring the transformation of digital identity",
-    gradient: "from-violet-500/20 to-purple-600/20",
+    title: "Visitor Management System",
+    description: "Platform for visitor registration and management with separate frontend and backend services",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/yourusername/visitor-management",
+    live: "https://visitor-system.demo",
+    category: "Full-Stack",
   },
   {
-    title: "Cinematic Portfolio",
-    category: "Motion Design",
-    description:
-      "A narrative-driven showcase merging motion design with storytelling",
-    gradient: "from-amber-600/20 to-orange-500/20",
+    title: "Natours",
+    description: "Full-stack Node.js tour booking application with authentication, payments, and reviews",
+    tech: ["Node.js", "Express", "MongoDB", "Pug"],
+    github: "https://github.com/yourusername/natours",
+    category: "Full-Stack",
   },
   {
-    title: "Constellation UI",
-    category: "Design Systems",
-    description:
-      "A design system inspired by cosmic patterns and fluid interactions",
-    gradient: "from-teal-500/20 to-cyan-500/20",
+    title: "Event Management API",
+    description: "RESTful API for event creation, registration, and management with real-time updates",
+    tech: ["Node.js", "Express", "PostgreSQL", "WebSockets"],
+    github: "https://github.com/yourusername/event-api",
+    category: "Backend",
   },
   {
-    title: "Emergence Studio",
-    category: "Full-Stack Development",
-    description:
-      "Creative agency platform with real-time collaboration features",
-    gradient: "from-purple-600/20 to-violet-500/20",
+    title: "Smart Campus Map",
+    description: "Interactive campus navigation system with building information and route planning",
+    tech: ["React", "TypeScript", "Mapbox", "Tailwind"],
+    github: "https://github.com/yourusername/campus-map",
+    live: "https://campus-map.demo",
+    category: "Frontend",
+  },
+  {
+    title: "Weather Dashboard",
+    description: "Real-time weather application with forecasts and location-based alerts",
+    tech: ["React", "OpenWeather API", "Chart.js"],
+    github: "https://github.com/yourusername/weather-app",
+    category: "Frontend",
+  },
+  {
+    title: "AI Note Taking",
+    description: "Intelligent note-taking application with AI-powered summaries and organization",
+    tech: ["Next.js", "OpenAI API", "MongoDB", "Prisma"],
+    github: "https://github.com/yourusername/ai-notes",
+    category: "Full-Stack",
   },
 ];
 
@@ -64,151 +82,118 @@ const Projects = () => {
   return (
     <section
       ref={sectionRef}
-      id="projects"
-      className="relative min-h-screen py-32 px-6 overflow-hidden"
+      data-section
+      className="relative py-24 px-6 overflow-hidden"
     >
-      {/* Background */}
       <div className="absolute inset-0 opacity-5 bg-film-grain" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-800 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-12"
-            }`}
-          >
-            Digital{" "}
-            <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
-              Gallery
-            </span>
-          </h2>
-          <p
-            className={`text-xl text-slate-600 max-w-2xl mx-auto transition-all duration-800 delay-100 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-12"
-            }`}
-          >
-            Each project is a scene in the story of creative evolution
-          </p>
-        </div>
+        <h2
+          className={`text-5xl md:text-7xl font-serif text-center mb-4 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
+          Projects
+        </h2>
+        <p
+          className={`text-center text-lg text-[#F5F3EF]/60 mb-16 transition-all duration-1000 delay-200 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
+          Recent work and experiments
+        </p>
 
-        {/* Projects grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`group transition-all duration-600 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-12"
-              } ${hoveredIndex === index ? "-translate-y-2" : ""}`}
+              className={`group transition-all duration-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              } ${hoveredIndex === index ? "-translate-y-2 scale-105" : ""}`}
               style={{ transitionDelay: `${index * 100}ms` }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative h-96 rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-lg">
-                {/* Project visual area */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}
-                >
-                  <div
-                    className={`absolute inset-0 transition-opacity duration-500 ${
-                      hoveredIndex === index ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{
-                      backgroundImage: `repeating-linear-gradient(
-                        0deg,
-                        transparent,
-                        transparent 2px,
-                        rgba(0, 0, 0, 0.03) 2px,
-                        rgba(0, 0, 0, 0.03) 4px
-                      )`,
-                    }}
-                  />
-                </div>
-
-                {/* Content overlay */}
-                <div
-                  className={`absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent transition-opacity duration-500 ${
-                    hoveredIndex === index ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <div className="space-y-4">
-                    <span
-                      className={`block text-sm font-semibold text-orange-400 uppercase tracking-wide transition-all duration-700 ${
-                        hoveredIndex === index
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-8 opacity-0"
-                      }`}
-                      style={{
-                        transitionDelay:
-                          hoveredIndex === index ? "200ms" : "0ms",
-                      }}
-                    >
-                      {project.category}
-                    </span>
-                    <h3
-                      className={`text-3xl font-bold text-white transition-all duration-700 ${
-                        hoveredIndex === index
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-8 opacity-0"
-                      }`}
-                      style={{
-                        transitionDelay:
-                          hoveredIndex === index ? "350ms" : "0ms",
-                      }}
-                    >
-                      {project.title}
-                    </h3>
-                    <p
-                      className={`text-slate-300 transition-all duration-700 ${
-                        hoveredIndex === index
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-8 opacity-0"
-                      }`}
-                      style={{
-                        transitionDelay:
-                          hoveredIndex === index ? "500ms" : "0ms",
-                      }}
-                    >
-                      {project.description}
-                    </p>
-                    <button
-                      className={`inline-flex items-center px-4 py-2 text-sm border border-purple-500 text-white rounded-lg hover:bg-purple-500 hover:text-white transition-all duration-700 group/btn ${
-                        hoveredIndex === index
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-8 opacity-0"
-                      }`}
-                      style={{
-                        transitionDelay:
-                          hoveredIndex === index ? "650ms" : "0ms",
-                      }}
-                    >
-                      View Project
-                      <ExternalLink className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    </button>
+              <div className="relative h-full bg-[#1A1A1A] rounded-lg p-6 border border-[#F5F3EF]/10 hover:border-[#8B7355]/30 transition-all duration-300 hover:shadow-2xl hover:shadow-[#8B7355]/10">
+                {/* Gradient overlay on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br from-[#8B7355]/10 to-[#2D9596]/10 rounded-lg transition-opacity duration-500 ${
+                  hoveredIndex === index ? "opacity-100" : "opacity-0"
+                }`} />
+                {/* Category Badge */}
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <span className={`text-xs font-mono text-[#8B7355] px-2 py-1 rounded border border-[#8B7355]/30 transition-all duration-300 ${
+                    hoveredIndex === index ? "bg-[#8B7355]/10" : ""
+                  }`}>
+                    {project.category}
+                  </span>
+                  <div className="flex gap-2">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#F5F3EF]/50 hover:text-[#8B7355] transition-colors duration-300"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#F5F3EF]/50 hover:text-[#8B7355] transition-colors duration-300"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
                 </div>
 
-                {/* Static title */}
-                <div
-                  className={`absolute bottom-8 left-8 right-8 transition-opacity duration-500 ${
-                    hoveredIndex === index ? "opacity-0" : "opacity-100"
-                  }`}
-                >
-                  <h3 className="text-2xl font-bold text-slate-900">
-                    {project.title}
-                  </h3>
-                  <span className="text-sm text-slate-600">
-                    {project.category}
-                  </span>
+                {/* Title */}
+                <h3 className="text-xl font-serif mb-3 text-[#F5F3EF] group-hover:text-[#8B7355] transition-colors duration-300 relative z-10">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-[#F5F3EF]/70 leading-relaxed mb-4 relative z-10">
+                  {project.description}
+                </p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 relative z-10">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className={`text-xs font-mono text-[#F5F3EF]/60 bg-[#F5F3EF]/5 px-2 py-1 rounded transition-all duration-300 ${
+                        hoveredIndex === index ? "bg-[#F5F3EF]/10 text-[#F5F3EF]/80" : ""
+                      }`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        <div
+          className={`mt-16 text-center transition-all duration-1000 delay-500 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
+          <a
+            href="https://github.com/phawaaaz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[#8B7355] font-mono text-sm hover:text-[#F5F3EF] transition-colors duration-300 group"
+          >
+            View all projects on GitHub
+            <span className="transform group-hover:translate-x-1 transition-transform duration-300">
+              →
+            </span>
+          </a>
         </div>
       </div>
     </section>
