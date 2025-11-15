@@ -72,7 +72,7 @@ const Hero = () => {
           }`}
         >
           <a
-            href="/Fawaz_Akinola_Resume.pdf"
+            href="/Fawaz_Akinola_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative text-[#8B7355] font-mono text-sm tracking-wider transition-all duration-300"
