@@ -1,164 +1,190 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-interface Stat {
-  value: string;
-  label: string;
-  color: string;
+interface Work {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
 }
 
-const stats: Stat[] = [
+const workExperience: Work[] = [
   {
-    value: "2+",
-    label: "Years Coding",
-    color: "#8B7355",
+    role: "Software Engineer",
+    company: "RTIG Inc",
+    period: "Present",
+    description:
+      "Building scalable web applications and contributing to core product development",
   },
   {
-    value: "10+",
-    label: "Projects Built",
-    color: "#2D9596",
+    role: "Tech Intern",
+    company: "Acemyx",
+    period: "Jul 2024 – Mar 2025",
+    description:
+      "Developed full-stack features and collaborated on client projects",
   },
   {
-    value: "10+",
-    label: "Technologies",
-    color: "#8B7355",
-  },
-  {
-    value: "100+",
-    label: "GitHub Commits",
-    color: "#2D9596",
+    role: "Student Intern",
+    company: "LCM",
+    period: "2023",
+    description:
+      "Assisted in software development and learned industry best practices",
   },
 ];
 
 const Experience = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [counters, setCounters] = useState(stats.map(() => 0));
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.3 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (isVisible) {
-      const intervals = stats.map((stat, index) => {
-        const target = parseInt(stat.value);
-        const duration = 2000;
-        const steps = 60;
-        const increment = target / steps;
-        let current = 0;
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
 
-        return setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            setCounters((prev) => {
-              const newCounters = [...prev];
-              newCounters[index] = target;
-              return newCounters;
-            });
-            clearInterval(intervals[index]);
-          } else {
-            setCounters((prev) => {
-              const newCounters = [...prev];
-              newCounters[index] = Math.floor(current);
-              return newCounters;
-            });
-          }
-        }, duration / steps);
-      });
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
-      return () => intervals.forEach(clearInterval);
-    }
-  }, [isVisible]);
+  const cardHoverVariants = {
+    rest: { scale: 1 },
+    hover: {
+      scale: 1.02,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
     <section
       ref={sectionRef}
       data-section
-      className="min-h-screen flex items-center py-16 px-6 relative overflow-hidden"
+      className="py-24 px-6 relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-5 bg-film-grain" />
 
-      <div className="max-w-7xl mx-auto w-full">
-        <h2
-          className={`text-5xl md:text-7xl font-serif text-center mb-4 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
+      <div className="max-w-4xl mx-auto w-full">
+        <motion.h2
+          initial={{ opacity: 0, y: 48 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-5xl md:text-7xl font-serif text-center mb-4"
         >
-          Craft
-        </h2>
+          Experience
+        </motion.h2>
 
-        <p
-          className={`text-center text-lg text-[#F5F3EF]/60 mb-20 transition-all duration-1000 delay-200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
+        <motion.p
+          initial={{ opacity: 0, y: 48 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center text-lg text-[#F5F3EF]/60 mb-16"
         >
-          Building, learning, and refining my craft every day
-        </p>
+          Where I've worked and learned
+        </motion.p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat, index) => (
-            <div
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+          className="space-y-12"
+        >
+          {workExperience.map((item, index) => (
+            <motion.div
               key={index}
-              className={`text-center transition-all duration-1000`}
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(40px)",
-                transitionDelay: `${index * 100}ms`,
-              }}
+              variants={itemVariants}
+              whileHover="hover"
+              initial="rest"
+              className="group relative"
             >
-              <div className="relative group">
-                <div className="relative">
-                  <div
-                    className="text-5xl md:text-6xl font-serif mb-3 transition-colors duration-300"
-                    style={{ color: stat.color }}
+              <motion.div variants={cardHoverVariants} className="relative">
+                {/* Mobile Layout */}
+                <div className="md:hidden border-l-2 border-[#8B7355]/30 pl-4 hover:border-[#8B7355] transition-colors duration-300">
+                  <span className="text-xs font-mono text-[#8B7355] mb-2 block">
+                    {item.period}
+                  </span>
+                  <motion.h3
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-xl font-serif text-[#F5F3EF] group-hover:text-[#8B7355] transition-colors duration-300 mb-1"
                   >
-                    {counters[index]}
-                    {stat.value.includes("+") && "+"}
+                    {item.role}
+                  </motion.h3>
+                  <p className="text-sm text-[#F5F3EF]/80 font-mono mb-2">
+                    {item.company}
+                  </p>
+                  <p className="text-sm text-[#F5F3EF]/60 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+
+                {/* Desktop Layout */}
+                <div className="hidden md:flex items-start gap-8 border-l-2 border-[#8B7355]/30 pl-6 hover:border-[#8B7355] transition-colors duration-300">
+                  <div className="flex-shrink-0 w-32">
+                    <span className="text-sm font-mono text-[#8B7355]">
+                      {item.period}
+                    </span>
                   </div>
-                  <div className="text-sm md:text-base font-mono text-[#F5F3EF]/70 tracking-wider uppercase">
-                    {stat.label}
+
+                  <div className="flex-1">
+                    <motion.h3
+                      whileHover={{ x: 8 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-2xl font-serif text-[#F5F3EF] group-hover:text-[#8B7355] transition-colors duration-300 mb-1"
+                    >
+                      {item.role}
+                    </motion.h3>
+                    <p className="text-base text-[#F5F3EF]/80 font-mono mb-2">
+                      {item.company}
+                    </p>
+                    <p className="text-sm text-[#F5F3EF]/60 leading-relaxed max-w-2xl">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
-              </div>
-
-              <div
-                className="mt-6 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-30"
-                style={{ color: stat.color }}
-              />
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div
-          className={`mt-20 text-center transition-all duration-1000 delay-500 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
+        {/* Timeline decoration */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mt-12 pt-12 border-t border-[#F5F3EF]/10"
         >
-          <a
-            href="https://github.com/phawaaaz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#8B7355] font-mono text-sm hover:text-[#F5F3EF] transition-colors duration-300 group"
-          >
-            View my work on GitHub
-            <span className="transform group-hover:translate-x-1 transition-transform duration-300">
-              →
-            </span>
-          </a>
-        </div>
+          <div className="text-center">
+            <p className="text-sm font-mono text-[#F5F3EF]/50">
+              Currently open to new opportunities
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
