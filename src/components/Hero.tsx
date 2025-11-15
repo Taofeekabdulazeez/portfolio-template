@@ -44,18 +44,19 @@ const Hero = () => {
           <div className="text-sm font-mono text-[#8B7355] tracking-widest mb-4 animate-pulse">
             AKINOLA FAWAZ
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-serif mb-6 tracking-tight">
             <span className="inline-block hover:text-[#8B7355] transition-colors duration-500">
               Full Stack Developer
             </span>
           </h1>
-          
+
           <div className="h-px w-48 bg-gradient-to-r from-transparent via-[#8B7355] to-transparent mx-auto my-8" />
-          
+
           <p className="text-xl md:text-2xl text-[#F5F3EF]/80 font-light max-w-3xl mx-auto leading-relaxed">
             <span className="inline-block hover:scale-105 transition-transform duration-300">
-              Building scalable web applications with React, Node.js, and TypeScript.
+              Building scalable web applications with React, Node.js, and
+              TypeScript.
             </span>
             <span className="block mt-2 text-[#8B7355] animate-pulse">
               Turning complex problems into elegant solutions.
@@ -71,7 +72,7 @@ const Hero = () => {
           }`}
         >
           <a
-            href="/resume.pdf"
+            href="/Fawaz_Akinola_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative text-[#8B7355] font-mono text-sm tracking-wider transition-all duration-300"
