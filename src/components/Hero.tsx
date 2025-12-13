@@ -29,7 +29,7 @@ const Hero = () => {
       </div>
 
       <div
-        className="absolute inset-0 bg-dither-pattern transition-opacity duration-[2000ms]"
+        className="absolute inset-0 bg-dither-pattern transition-opacity "
         style={{ opacity: pixelOpacity }}
       />
 
@@ -39,7 +39,7 @@ const Hero = () => {
             textVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-8"
-          }`}
+          }`} 
         >
           <div className="text-sm font-mono text-[#8B7355] tracking-widest mb-4 animate-pulse">
             AKINOLA FAWAZ
@@ -106,7 +106,8 @@ const Hero = () => {
       </div>
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-10 bg-film-grain animate-grain" />
+        <div className="absolute inset-0 opacity-10 bg-film-grain " />
+        {/* animate-grain */}
       </div>
     </section>
   );
