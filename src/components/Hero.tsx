@@ -39,15 +39,15 @@ const Hero = () => {
             textVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-8"
-          }`} 
+          }`}
         >
           <div className="text-sm font-mono text-[#8B7355] tracking-widest mb-4 animate-pulse">
-            AKINOLA FAWAZ
+            Taofeek Abdulazeez
           </div>
 
           <h1 className="text-5xl md:text-7xl font-serif mb-6 tracking-tight">
             <span className="inline-block hover:text-[#8B7355] transition-colors duration-500">
-              Full Stack Developer
+              Software Engineer
             </span>
           </h1>
 
@@ -72,7 +72,7 @@ const Hero = () => {
           }`}
         >
           <a
-            href="/Fawaz_Akinola_CV.pdf"
+            href="/Taofeek_Abdulazeez_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative text-[#8B7355] font-mono text-sm tracking-wider transition-all duration-300"
@@ -89,7 +89,7 @@ const Hero = () => {
           <span className="text-[#F5F3EF]/20 animate-pulse">|</span>
 
           <a
-            href="https://github.com/phawaaaz"
+            href="https://github.com/Taofeekabdulazeez"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative text-[#8B7355] font-mono text-sm tracking-wider transition-all duration-300"

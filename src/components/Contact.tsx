@@ -52,7 +52,7 @@ const Contact = () => {
       return;
     }
 
-    const mailtoLink = `mailto:phawaazakinola@gmail.com?subject=Portfolio Contact: ${encodeURIComponent(
+    const mailtoLink = `mailto:taofeekabdulazeeztaiwo@gmail.com?subject=Portfolio Contact: ${encodeURIComponent(
       formData.name
     )}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
@@ -61,16 +61,20 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Github, url: "https://github.com/phawaaaz", label: "GitHub" },
+    {
+      icon: Github,
+      url: "https://github.com/Taofeekabdulazeez",
+      label: "GitHub",
+    },
     {
       icon: Linkedin,
-      url: "https://linkedin.com/in/phawaz/",
+      url: "https://linkedin.com/in/taofeekabdulazeez/",
       label: "LinkedIn",
     },
-    { icon: Twitter, url: "https://twitter.com/No_lolade", label: "Twitter" },
+    { icon: Twitter, url: "https://x.com/SirFeeky", label: "Twitter" },
     {
       icon: Instagram,
-      url: "https://instagram.com/phawaaz_",
+      url: "https://instagram.com/taofeekabdulazeez_",
       label: "Instagram",
     },
   ];
@@ -197,12 +201,12 @@ const Contact = () => {
               <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
                 <h3 className="text-sm font-mono text-[#8B7355] mb-3">EMAIL</h3>
                 <a
-                  href="mailto:akinolafawaz28@gmail.com"
+                  href="mailto:taofeekabdulazeeztaiwo@gmail.com"
                   className="flex items-center gap-3 text-[#F5F3EF]/80 hover:text-[#8B7355] transition-colors duration-300"
                 >
                   <Mail className="w-5 h-5" />
                   <span className="font-mono text-sm">
-                    phawaazakinola@gmail.com
+                    taofeekabdulazeeztaiwo@gmail.com
                   </span>
                 </a>
               </motion.div>
@@ -265,7 +269,7 @@ const Contact = () => {
           className="mt-20 pt-8 border-t border-[#F5F3EF]/10 text-center"
         >
           <p className="text-sm font-mono text-[#F5F3EF]/40">
-            © 2025 Akinola Fawaz.
+            © 2025 Taofeek Abdulazeez.
           </p>
         </motion.div>
       </div>

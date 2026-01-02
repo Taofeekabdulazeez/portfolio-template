@@ -44,8 +44,8 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#8B7355]/10 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img
-                    src="./fawaz.png"
-                    alt="Akinola Fawaz"
+                    src="./taofeek.jpg"
+                    alt="Taofeek Abdulazeez"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -66,9 +66,11 @@ const About = () => {
               About
             </h2>
             <p className="text-lg text-[#F5F3EF]/90 leading-relaxed">
-              Full-stack developer building scalable web applications with
-              React, Node.js, and TypeScript. I focus on clean code and
-              practical solutions.
+              Taofeek is a Software Engineer with a strong foundation in
+              computer science and a passion for solving problems through
+              technology. He combines academic knowledge with practical
+              experience to build secure, scalable, and user-focused
+              applications.
             </p>
           </div>
 
@@ -80,7 +82,7 @@ const About = () => {
             }}
           >
             <a
-              href="mailto:akinolafawaz28@gmail.com"
+              href="mailto:taofeekabdulazeeztaiwo@gmail.com"
               className="group inline-flex items-center text-base font-mono text-[#8B7355] hover:text-[#F5F3EF] transition-colors duration-300"
             >
               Get in touch

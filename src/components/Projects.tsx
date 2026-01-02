@@ -13,46 +13,52 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Visitor Management System",
-    description: "Platform for visitor registration and management with separate frontend and backend services",
+    description:
+      "Platform for visitor registration and management with separate frontend and backend services",
     tech: ["React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/phawaaaz/backendRevamp",
+    github: "https://github.com/Taofeekabdulazeez/backendRevamp",
     live: "https://project-demo-cyan.vercel.app",
     category: "Full-Stack",
   },
   {
     title: "Natours",
-    description: "Full-stack Node.js tour booking application with authentication, payments, and reviews",
+    description:
+      "Full-stack Node.js tour booking application with authentication, payments, and reviews",
     tech: ["Node.js", "Express", "MongoDB", "Pug"],
-    github: "https://github.com/phawaaaz/node_practice",
+    github: "https://github.com/Taofeekabdulazeez/node_practice",
     category: "Full-Stack",
   },
   {
     title: "Event Management API",
-    description: "RESTful API for event creation, registration, and management with real-time updates",
+    description:
+      "RESTful API for event creation, registration, and management with real-time updates",
     tech: ["Node.js", "Express", "MongoDB", "WebSockets"],
-    github: "https://github.com/phawaaaz/eventmanagementApi",
+    github: "https://github.com/Taofeekabdulazeez/eventmanagementApi",
     category: "Backend",
   },
   {
     title: "Smart Campus Map",
-    description: "Interactive campus navigation system with building information and route planning",
+    description:
+      "Interactive campus navigation system with building information and route planning",
     tech: ["React", "TypeScript", "LeafletJS", "Tailwind"],
-    github: "https://github.com/phawaaaz/Csc420_fe",
+    github: "https://github.com/Taofeekabdulazeez/Csc420_fe",
     live: "https://csc420-fe.vercel.app",
     category: "Frontend",
   },
   {
     title: "Weather Dashboard",
-    description: "Real-time weather application with forecasts and location-based alerts",
+    description:
+      "Real-time weather application with forecasts and location-based alerts",
     tech: ["React", "OpenWeather API", "Chart.js"],
-    github: "https://github.com/phawaaaz/Weather-app",
+    github: "https://github.com/Taofeekabdulazeez/Weather-app",
     category: "Frontend",
   },
   {
     title: "AI Note Taking",
-    description: "Intelligent note-taking application with AI-powered summaries and organization",
+    description:
+      "Intelligent note-taking application with AI-powered summaries and organization",
     tech: ["Next.js", "OpenAI API", "MongoDB", "Prisma"],
-    github: "https://github.com/phawaaaz/ai-notes",
+    github: "https://github.com/Taofeekabdulazeez/ai-notes",
     category: "Full-Stack",
   },
 ];
@@ -108,7 +114,9 @@ const Projects = () => {
             <div
               key={index}
               className={`group transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
               } ${hoveredIndex === index ? "-translate-y-2 scale-105" : ""}`}
               style={{ transitionDelay: `${index * 100}ms` }}
               onMouseEnter={() => setHoveredIndex(index)}
@@ -116,14 +124,18 @@ const Projects = () => {
             >
               <div className="relative h-full bg-[#1A1A1A] rounded-lg p-6 border border-[#F5F3EF]/10 hover:border-[#8B7355]/30 transition-all duration-300 hover:shadow-2xl hover:shadow-[#8B7355]/10">
                 {/* Gradient overlay on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-[#8B7355]/10 to-[#2D9596]/10 rounded-lg transition-opacity duration-500 ${
-                  hoveredIndex === index ? "opacity-100" : "opacity-0"
-                }`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br from-[#8B7355]/10 to-[#2D9596]/10 rounded-lg transition-opacity duration-500 ${
+                    hoveredIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
+                />
                 {/* Category Badge */}
                 <div className="flex items-center justify-between mb-4 relative z-10">
-                  <span className={`text-xs font-mono text-[#8B7355] px-2 py-1 rounded border border-[#8B7355]/30 transition-all duration-300 ${
-                    hoveredIndex === index ? "bg-[#8B7355]/10" : ""
-                  }`}>
+                  <span
+                    className={`text-xs font-mono text-[#8B7355] px-2 py-1 rounded border border-[#8B7355]/30 transition-all duration-300 ${
+                      hoveredIndex === index ? "bg-[#8B7355]/10" : ""
+                    }`}
+                  >
                     {project.category}
                   </span>
                   <div className="flex gap-2">
@@ -166,7 +178,9 @@ const Projects = () => {
                     <span
                       key={i}
                       className={`text-xs font-mono text-[#F5F3EF]/60 bg-[#F5F3EF]/5 px-2 py-1 rounded transition-all duration-300 ${
-                        hoveredIndex === index ? "bg-[#F5F3EF]/10 text-[#F5F3EF]/80" : ""
+                        hoveredIndex === index
+                          ? "bg-[#F5F3EF]/10 text-[#F5F3EF]/80"
+                          : ""
                       }`}
                     >
                       {tech}
@@ -184,7 +198,7 @@ const Projects = () => {
           }`}
         >
           <a
-            href="https://github.com/phawaaaz"
+            href="https://github.com/Taofeekabdulazeez"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[#8B7355] font-mono text-sm hover:text-[#F5F3EF] transition-colors duration-300 group"

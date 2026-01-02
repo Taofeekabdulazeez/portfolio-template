@@ -56,11 +56,11 @@ const Preload = ({ onComplete }: PreloadProps) => {
           }`}
         >
           <div className="text-6xl md:text-8xl font-serif text-[#8B7355] mb-8 tracking-tight">
-            AF
+            TA
           </div>
-          
+
           <div className="text-sm font-mono text-[#F5F3EF]/50 tracking-widest mb-8">
-            AKINOLA FAWAZ
+            Taofeek Abdulazeez
           </div>
         </div>
 
@@ -72,7 +72,7 @@ const Preload = ({ onComplete }: PreloadProps) => {
               style={{ width: `${progress}%` }}
             />
           </div>
-          
+
           <div className="mt-4 text-xs font-mono text-[#F5F3EF]/40 tracking-wider">
             {progress}%
           </div>
