@@ -7,59 +7,62 @@ interface Project {
   tech: string[];
   github?: string;
   live?: string;
-  category: "Full-Stack" | "Backend" | "Frontend";
+  category: "Full-Stack" | "Backend" | "Frontend" | "AI/Full-Stack";
 }
 
 const projects: Project[] = [
   {
-    title: "Visitor Management System",
+    title: "QuizLab NG",
     description:
-      "Platform for visitor registration and management with separate frontend and backend services",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/Taofeekabdulazeez/backendRevamp",
-    live: "https://project-demo-cyan.vercel.app",
+      "QuizLab NG is a Telegram-based quiz platform that helps Nigerian students prepare for UTME and WAEC through real-time, competitive quiz battles with points, rankings, and prizes.",
+    tech: ["Typescript", "Node.js", "GrammyJS", "PostgreSQL", "Redis", "React"],
+    github: "https://github.com/Taofeekabdulazeez/quizlab-website",
+    live: "https://quizlab.com.ng",
     category: "Full-Stack",
   },
   {
-    title: "Natours",
+    title: "ReferX",
     description:
-      "Full-stack Node.js tour booking application with authentication, payments, and reviews",
-    tech: ["Node.js", "Express", "MongoDB", "Pug"],
+      "ReferX is a decentralized platform that connects talented individuals with meaningful opportunities while ensuring fair compensation through blockchain technology.",
+    tech: ["Node.js", "NestJS", "PostgreSQL", "React"],
     github: "https://github.com/Taofeekabdulazeez/node_practice",
+    live: "https://referx.com.ng",
     category: "Full-Stack",
   },
   {
-    title: "Event Management API",
+    title: "BookMyTime",
     description:
-      "RESTful API for event creation, registration, and management with real-time updates",
-    tech: ["Node.js", "Express", "MongoDB", "WebSockets"],
-    github: "https://github.com/Taofeekabdulazeez/eventmanagementApi",
+      "BookMyTime is an integrated platform for managing online consultations comprehensively, offering all the essential tools for scheduling meetings and video calling your clients.",
+    tech: ["Node.js", "NestJS", "PostgreSQL", "WebSockets", "Next.js"],
+    // github: "https://github.com/Taofeekabdulazeez/eventmanagementApi",
+    live: "https://bookmytime.com",
+    category: "Full-Stack",
+  },
+  {
+    title: "Anagram Solver",
+    description:
+      "A Go-based anagram solver that generates a list of all valid words from a scrambled input string.",
+    tech: ["Golang"],
+    github: "https://github.com/Taofeekabdulazeez/anagramsolver",
+    live: "https://anagramsolver0.vercel.app",
     category: "Backend",
   },
   {
-    title: "Smart Campus Map",
+    title: "QLearn",
     description:
-      "Interactive campus navigation system with building information and route planning",
-    tech: ["React", "TypeScript", "LeafletJS", "Tailwind"],
-    github: "https://github.com/Taofeekabdulazeez/Csc420_fe",
-    live: "https://csc420-fe.vercel.app",
-    category: "Frontend",
+      "This project addresses real challenges that students in Nigerian higher institutions face when using AI chatbots to study.",
+    tech: ["Python", "Typescript", "FastAPI", "React", "Node.js"],
+    github: "https://github.com/Taofeekabdulazeez/",
+    live: "https://qlearn-seven.vercel.app",
+    category: "AI/Full-Stack",
   },
   {
-    title: "Weather Dashboard",
+    title: "PostDraft",
     description:
-      "Real-time weather application with forecasts and location-based alerts",
-    tech: ["React", "OpenWeather API", "Chart.js"],
-    github: "https://github.com/Taofeekabdulazeez/Weather-app",
-    category: "Frontend",
-  },
-  {
-    title: "AI Note Taking",
-    description:
-      "Intelligent note-taking application with AI-powered summaries and organization",
-    tech: ["Next.js", "OpenAI API", "MongoDB", "Prisma"],
-    github: "https://github.com/Taofeekabdulazeez/ai-notes",
-    category: "Full-Stack",
+      "PostDraft is a Centralized hub for drafting, saving, and managing social media posts across platforms.",
+    tech: [ "C#", ".NET", "Entity Framework", "PostgreSQL"],
+    github: "https://github.com/Taofeekabdulazeez/PostDraftServer",
+    category: "Backend",
   },
 ];
 

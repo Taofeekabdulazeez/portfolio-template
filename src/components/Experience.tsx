@@ -6,29 +6,47 @@ interface Work {
   company: string;
   period: string;
   description: string;
+  kpis?: string[];
 }
 
 const workExperience: Work[] = [
   {
     role: "Software Engineer",
-    company: "RTIG Inc",
-    period: "Present",
-    description:
-      "Building scalable web applications and contributing to core product development",
+    company: "PacifyLabs Technologies Limited",
+    period: "Apr 2024 – Oct 2024",
+    description: "",
+    kpis: [
+      `Built and deployed a full-scale full-stack application (BookMyTime) contributing to every phase of the software development lifecycle`,
+      `Implemented a secure Stripe subscription system with automated billing and
+webhooks, reducing payment errors by over 25% and improving
+subscription reliability`,
+      `Optimised the application for SEO and performance, improving the
+platform’s Google search ranking significantly.`,
+      `Built a real-time admin dashboard with analytics and charts, enabling the
+team to monitor platform activities with 99% data accuracy and make
+better data-driven decisions.`,
+      `Set up Vercel CI/CD pipelines for automated deployments, cutting
+deployment time by 40% and ensuring faster, more stable feature releases`,
+    ],
   },
   {
-    role: "Tech Intern",
-    company: "Acemyx",
-    period: "Jul 2024 – Mar 2025",
-    description:
-      "Developed full-stack features and collaborated on client projects",
-  },
-  {
-    role: "Student Intern",
-    company: "LCM",
-    period: "2023",
-    description:
-      "Assisted in software development and learned industry best practices",
+    role: "Software Engineer",
+    company: "Nigeria Association of Computer Science Students (NACOSS)",
+    period: "Oct 2023 – Nov 2024",
+    description: "",
+    kpis: [
+      `Modernised legacy NACOSS web systems by refactoring outdated
+components and improving performance, resulting in faster page loads and
+a smoother experience for members.
+`,
+      `Enhanced the NACOSS website’s usability by redesigning key pages and
+restructuring UI flows, resulting in increased user engagement and easier
+navigation for students.`,
+      `Contributed to the overall revamp of NACOSS digital tools by participating
+in code reviews and frontend planning sessions, resulting in a more
+maintainable system and faster rollout of new features.
+`,
+    ],
   },
 ];
 
@@ -165,6 +183,16 @@ const Experience = () => {
                     <p className="text-sm text-[#F5F3EF]/60 leading-relaxed max-w-2xl">
                       {item.description}
                     </p>
+                    <ul>
+                      {item.kpis?.map((line, idx) => (
+                        <li
+                          key={idx}
+                          className="mb-2 list-disc list-inside text-sm text-[#F5F3EF]/60 leading-relaxed max-w-2xl"
+                        >
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </motion.div>

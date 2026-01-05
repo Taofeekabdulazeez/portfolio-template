@@ -55,8 +55,7 @@ const Hero = () => {
 
           <p className="text-xl md:text-2xl text-[#F5F3EF]/80 font-light max-w-3xl mx-auto leading-relaxed">
             <span className="inline-block hover:scale-105 transition-transform duration-300">
-              Building scalable web applications with React, Node.js, and
-              TypeScript.
+              Building scalable Software applications with C#, Golang and Typescript.
             </span>
             <span className="block mt-2 text-[#8B7355] animate-pulse">
               Turning complex problems into elegant solutions.
