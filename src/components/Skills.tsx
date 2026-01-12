@@ -1,17 +1,31 @@
 import { useEffect, useRef, useState } from "react";
-
 const skillGroups = {
-  Frontend: ["React", "Next.js", "Tailwind CSS", "Redux Toolkit"],
-  Backend: ["Node.js", "Express", "GraphQL", "REST API", "WebSockets"],
-  Database: ["PostgreSQL", "MongoDB", "Redis"],
-  Tools: ["Git", "VsCode", "Vercel", "Postman"],
-  Principles: [
-    "Clean Architecture",
-    "System Thinking",
-    "Scalable Design",
-    "Agile Methodologies",
-    "TDD",
-    "OOP",
+  "Programming Languages": ["C#", "Golang", "Javascript/TypeScript", "Python"],
+
+  "Frameworks & Libraries": [
+    ".NET",
+    "NodeJS (Nest.js/Express)",
+    "Gin",
+    "React",
+  ],
+
+  Databases: ["MySQL", "PostgreSQL", "SQL Server", "MongoDB", "Redis"],
+
+  "Version Control": ["Git", "GitLab", "Bitbucket"],
+
+  "Cloud Platforms": ["Azure", "AWS", "GCP"],
+
+  "DevOps & CI/CD": ["Azure DevOps", "GitHub Actions", "GitLab CI"],
+
+  "Containers & Orchestration": ["Docker", "Kubernetes"],
+
+  "Computer Science": [
+    "System Design",
+    "Data Structures and Algorithms",
+    "Distributed Systems",
+    "Object-Oriented Design",
+    "Database Design",
+    "API Design",
   ],
 };
 
@@ -41,7 +55,7 @@ const Skills = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        Tech Stack
+        Technical Skills
       </h2>
 
       <p
@@ -52,7 +66,7 @@ const Skills = () => {
         Tools I use to build
       </p>
 
-      <div className="max-w-7xl w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12">
+      <div className="max-w-7xl w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
         {Object.entries(skillGroups).map(([category, skills], i) => (
           <div
             key={category}
