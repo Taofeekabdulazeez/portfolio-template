@@ -103,8 +103,7 @@ const Contact = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -188,7 +187,7 @@ const Contact = () => {
                 <span className="relative z-10">Send Message</span>
               </motion.button>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Contact Info & Social */}
           <motion.div

@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Navigation from "./components/Navigation";
+import Education from "./components/Education";
 
 function App() {
   const [activeSection, setActiveSection] = useState(0);
@@ -41,10 +42,11 @@ function App() {
         <Navigation activeSection={activeSection} />
         <Hero />
         <About />
-        <Projects />
         <Experience />
-        {/* <Achievements /> */}
+        <Education />
         <Skills />
+        <Projects />
+        {/* <Achievements /> */}
         <Contact />
       </div>
     </>

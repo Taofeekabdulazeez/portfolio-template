@@ -6,51 +6,18 @@ interface Work {
   company: string;
   period: string;
   description: string;
-  kpis?: string[];
 }
 
 const workExperience: Work[] = [
   {
-    role: "Software Engineer",
-    company: "PacifyLabs Technologies Limited",
-    period: "Apr 2024 – Oct 2024",
+    role: "Bachelor of Computer Science",
+    company: "University of Ilorin, Nigeria",
+    period: "Sep 2020 – Oct 2025",
     description: "",
-    kpis: [
-      `Built and deployed a full-scale full-stack application (BookMyTime) contributing to every phase of the software development lifecycle`,
-      `Implemented a secure Stripe subscription system with automated billing and
-webhooks, reducing payment errors by over 25% and improving
-subscription reliability`,
-      `Optimised the application for SEO and performance, improving the
-platform’s Google search ranking significantly.`,
-      `Built a real-time admin dashboard with analytics and charts, enabling the
-team to monitor platform activities with 99% data accuracy and make
-better data-driven decisions.`,
-      `Set up Vercel CI/CD pipelines for automated deployments, cutting
-deployment time by 40% and ensuring faster, more stable feature releases`,
-    ],
-  },
-  {
-    role: "Software Engineer",
-    company: "Nigeria Association of Computer Science Students (NACOSS)",
-    period: "Oct 2023 – Nov 2024",
-    description: "",
-    kpis: [
-      `Modernised legacy NACOSS web systems by refactoring outdated
-components and improving performance, resulting in faster page loads and
-a smoother experience for members.
-`,
-      `Enhanced the NACOSS website’s usability by redesigning key pages and
-restructuring UI flows, resulting in increased user engagement and easier
-navigation for students.`,
-      `Contributed to the overall revamp of NACOSS digital tools by participating
-in code reviews and frontend planning sessions, resulting in a more
-maintainable system and faster rollout of new features.
-`,
-    ],
   },
 ];
 
-const Experience = () => {
+const Education = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -112,20 +79,10 @@ const Experience = () => {
           initial={{ opacity: 0, y: 48 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-5xl md:text-7xl font-serif text-center mb-4"
+          className="text-5xl md:text-7xl font-serif text-center mb-12"
         >
-          Experience
+          Education
         </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 48 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center text-lg text-[#F5F3EF]/60 mb-16"
-        >
-          Where I've worked and learned
-        </motion.p>
-
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -159,16 +116,6 @@ const Experience = () => {
                   <p className="text-sm text-[#F5F3EF]/60 leading-relaxed">
                     {item.description}
                   </p>
-                  <ul>
-                    {item.kpis?.map((line, idx) => (
-                      <li
-                        key={idx}
-                        className="mb-2 list-disc list-inside text-sm text-[#F5F3EF]/60 leading-relaxed max-w-2xl"
-                      >
-                        {line}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
                 {/* Desktop Layout */}
@@ -193,39 +140,15 @@ const Experience = () => {
                     <p className="text-sm text-[#F5F3EF]/60 leading-relaxed max-w-2xl">
                       {item.description}
                     </p>
-                    <ul>
-                      {item.kpis?.map((line, idx) => (
-                        <li
-                          key={idx}
-                          className="mb-2 list-disc list-inside text-sm text-[#F5F3EF]/60 leading-relaxed max-w-2xl"
-                        >
-                          {line}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               </motion.div>
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Timeline decoration */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mt-12 pt-12 border-t border-[#F5F3EF]/10"
-        >
-          <div className="text-center">
-            <p className="text-sm font-mono text-[#F5F3EF]/50">
-              Currently open to new opportunities
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
 };
 
-export default Experience;
+export default Education;
