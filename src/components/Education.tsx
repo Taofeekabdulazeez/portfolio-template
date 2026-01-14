@@ -13,7 +13,7 @@ const workExperience: Work[] = [
     role: "Bachelor of Computer Science",
     company: "University of Ilorin, Nigeria",
     period: "Sep 2020 – Oct 2025",
-    description: "",
+    description: "Grade: First Class Honours",
   },
 ];
 
