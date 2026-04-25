@@ -10,6 +10,12 @@ interface Work {
 }
 
 const workExperience: Work[] = [
+   {
+    role: "Software Engineer",
+    company: "EcoBank Nigeria",
+    period: "Mar 2026 – Present",
+    description: "",
+  },
   {
     role: "Software Engineer",
     company: "PacifyLabs Technologies Limited",
