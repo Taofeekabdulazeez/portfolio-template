@@ -15,6 +15,12 @@ const workExperience: Work[] = [
     company: "EcoBank Nigeria",
     period: "Mar 2026 – Present",
     description: "",
+    kpis: [
+      `Automated key HR onboarding processes, including document management and employee onboarding workflows, significantly reducing manual intervention and processing time.`,
+      `Developed workflow automation features that improved onboarding efficiency and enhanced the experience for new hires and HR personnel.`,
+      `Enhanced the Check Tracking Portal by implementing new functionalities that improved cheque monitoring, tracking accuracy, and operational transparency.`,
+      `Delivered system improvements that increased process reliability and reduced the effort required for tracking and managing cheque-related activities.`
+    ]
   },
   {
     role: "Software Engineer",

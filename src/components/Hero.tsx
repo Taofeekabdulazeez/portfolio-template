@@ -55,11 +55,12 @@ const Hero = () => {
 
           <p className="text-xl md:text-2xl text-[#F5F3EF]/80 font-light max-w-3xl mx-auto leading-relaxed">
             <span className="inline-block hover:scale-105 transition-transform duration-300">
-              Building scalable Software applications with Java, Golang and Typescript.
+              {/* Building scalable Software applications with Java, Golang and Typescript. */}
+              Open Source Contributor | Technical Writer | Applied AI Developer
             </span>
-            <span className="block mt-2 text-[#8B7355] animate-pulse">
+            {/* <span className="block mt-2 text-[#8B7355] animate-pulse">
               Turning complex problems into elegant solutions.
-            </span>
+            </span> */}
           </p>
         </div>
 
@@ -71,7 +72,7 @@ const Hero = () => {
           }`}
         >
           <a
-            href="/Taofeek_Abdulazeez_Resume.pdf"
+            href="/Taofeek_Abdulazeez_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative text-[#8B7355] font-mono text-sm tracking-wider transition-all duration-300"
